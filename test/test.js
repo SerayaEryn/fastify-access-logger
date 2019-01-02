@@ -130,30 +130,25 @@ test('should end access logger', (t) => {
   })
 })
 
-test('should throw error on missing transports #1', async (t) => {
+test('should throw error on missing transports #1', (t) => {
   t.plan(1)
   const fastify = Fastify()
 
   const options = {
     transports: []
   }
-  try {
-    fastify.register(fastifyAccessLogger, options)
-    await fastify.ready()
-  } catch (error) {
-    t.ok(error)
-  }
+
+  fastify.register(fastifyAccessLogger, options)
+  return fastify.ready()
+    .catch((error) => t.ok(error))
 })
 
-test('should throw error on missing transports #2', async (t) => {
+test('should throw error on missing transports #2', (t) => {
   t.plan(1)
   const fastify = Fastify()
 
   const options = {}
-  try {
-    fastify.register(fastifyAccessLogger, options)
-    await fastify.ready()
-  } catch (error) {
-    t.ok(error)
-  }
+  fastify.register(fastifyAccessLogger, options)
+  return fastify.ready()
+    .catch((error) => t.ok(error))
 })
