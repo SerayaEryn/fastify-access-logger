@@ -106,6 +106,39 @@ test('should handle payload != string', (t) => {
   })
 })
 
+test('should add newline at end of every line', (t) => {
+  t.plan(4)
+  const fastify = Fastify()
+
+  const options = {
+    transports: [{
+      write (line) {
+        t.ok(line.endsWith('\n'))
+      }
+    }]
+  }
+  fastify.register(fastifyAccessLogger, options)
+  fastify.get('/test', (request, reply) => {
+    reply.send('test')
+  })
+
+  fastify.listen(0, (err) => {
+    t.error(err)
+    fastify.server.unref()
+
+    request({
+      method: 'GET',
+      uri: 'http://localhost:' + fastify.server.address().port + '/test?test=true',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }, (err, response, body) => {
+      t.error(err)
+      t.strictEqual(response.statusCode, 200)
+    })
+  })
+})
+
 test('should end access logger', (t) => {
   t.plan(3)
   const fastify = Fastify()
