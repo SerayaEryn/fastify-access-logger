@@ -30,5 +30,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SerayaEryn/fastify-access-logger.git"
-  }
+  },
+  "keywords": [
+    "access logger",
+    "access",
+    "logger",
+    "fastify",
+    "plugin"
+  ]
 }
