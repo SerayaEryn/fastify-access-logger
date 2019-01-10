@@ -40,6 +40,111 @@ test('should write line to all transports', (t) => {
   })
 })
 
+test('should write line to all transports using custom format', (t) => {
+  t.plan(4)
+  const fastify = Fastify()
+
+  const options = {
+    transports: [{
+      write (line) {
+        t.ok(/127\.0\.0\.1 GET - 200 \d \d+.*/.test(line))
+      }
+    }],
+    format: 'IP METHOD PARAMETERS STATUS DURATION SIZE'
+  }
+  fastify.register(fastifyAccessLogger, options)
+  fastify.get('/test', (request, reply) => {
+    reply.send(200)
+  })
+
+  fastify.listen(0, (err) => {
+    t.error(err)
+    fastify.server.unref()
+
+    request({
+      method: 'GET',
+      uri: 'http://localhost:' + fastify.server.address().port + '/test',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }, (err, response, body) => {
+      t.error(err)
+      t.strictEqual(response.statusCode, 200)
+    })
+  })
+})
+
+test('should write line to all transports using custom format', (t) => {
+  t.plan(4)
+  const fastify = Fastify()
+
+  const options = {
+    transports: [{
+      write (line) {
+        t.ok(/127\.0\.0\.1 GET - 200 \d \d+ something.*/.test(line))
+      }
+    }],
+    format: 'IP METHOD PARAMETERS STATUS DURATION SIZE REFERER',
+    customTokens: {
+      REFERER: 'const REFERER = \'something\''
+    }
+  }
+  fastify.register(fastifyAccessLogger, options)
+  fastify.get('/test', (request, reply) => {
+    reply.send(200)
+  })
+
+  fastify.listen(0, (err) => {
+    t.error(err)
+    fastify.server.unref()
+
+    request({
+      method: 'GET',
+      uri: 'http://localhost:' + fastify.server.address().port + '/test',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }, (err, response, body) => {
+      t.error(err)
+      t.strictEqual(response.statusCode, 200)
+    })
+  })
+})
+
+test('should write line to all transports using custom format', (t) => {
+  t.plan(4)
+  const fastify = Fastify()
+
+  const options = {
+    transports: [{
+      write (line) {
+        t.ok(/127\.0\.0\.1 GET 200 \d+.*/.test(line))
+      }
+    }],
+    format: 'IP METHOD STATUS SIZE'
+  }
+  fastify.register(fastifyAccessLogger, options)
+  fastify.get('/test', (request, reply) => {
+    reply.send(200)
+  })
+
+  fastify.listen(0, (err) => {
+    t.error(err)
+    fastify.server.unref()
+
+    request({
+      method: 'GET',
+      uri: 'http://localhost:' + fastify.server.address().port + '/test',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }, (err, response, body) => {
+      t.error(err)
+      t.strictEqual(response.statusCode, 200)
+    })
+  })
+})
+
 test('should log url parameters', (t) => {
   t.plan(4)
   const fastify = Fastify()

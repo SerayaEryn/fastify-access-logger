@@ -22,7 +22,8 @@
   "dependencies": {
     "each-async": "^1.1.1",
     "fast-date-format": "^2.0.0",
-    "fastify-plugin": "^1.4.0"
+    "fastify-plugin": "^1.4.0",
+    "generate-function": "^2.3.1"
   },
   "engines": {
     "node": ">= 6.0.0"
