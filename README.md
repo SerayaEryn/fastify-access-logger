@@ -50,9 +50,10 @@ An array of [Writable](https://nodejs.org/api/stream.html#stream_class_stream_wr
 
 Allows to specify a custom format. 
 The following tokens are supported:
+
 | Token         | Description	               |
-| ------------- | -------------------------- |
-| IP            | The ip adress              |
+| ------------- | -------------------------- | 
+| IP            | The ip address              |
 | DATE          | The formatted date         |
 | METHOD        | The http request method    |
 | URL           | The url without parameters |
