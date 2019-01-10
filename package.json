@@ -1,6 +1,6 @@
 {
   "name": "fastify-access-logger",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "an access logger plugin for fastify",
   "main": "lib/AccessLoggerPlugin.js",
   "scripts": {
