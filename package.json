@@ -17,7 +17,7 @@
     "fastify": "^2.0.0-rc.4",
     "request": "^2.88.0",
     "standard": "^14.0.0",
-    "tap": "^12.1.1"
+    "tap": "^14.6.1"
   },
   "dependencies": {
     "each-async": "^1.1.1",
@@ -26,7 +26,7 @@
     "generate-function": "^2.3.1"
   },
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 8.0.0"
   },
   "repository": {
     "type": "git",
