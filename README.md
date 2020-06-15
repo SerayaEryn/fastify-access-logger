@@ -1,6 +1,5 @@
 # fastify-access-logger
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/SerayaEryn/fastify-access-logger.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/SerayaEryn/fastify-access-logger.svg?branch=master)](https://travis-ci.org/SerayaEryn/fastify-access-logger)
 [![Coverage Status](https://coveralls.io/repos/github/SerayaEryn/fastify-access-logger/badge.svg?branch=master)](https://coveralls.io/github/SerayaEryn/fastify-access-logger?branch=master)
 [![NPM version](https://img.shields.io/npm/v/fastify-access-logger.svg?style=flat)](https://www.npmjs.com/package/fastify-access-logger)
